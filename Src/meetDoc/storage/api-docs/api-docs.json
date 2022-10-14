@@ -1,0 +1,910 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "MeetDoc",
+        "description": "MeetDoc APIs Documentation using Swagger",
+        "contact": {
+            "email": "mohamed.ahmed.aly.d@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/email/reset-password": {
+            "post": {
+                "tags": [
+                    " Email - admin reset password -"
+                ],
+                "summary": "admin send eamil to reset password",
+                "operationId": "9d0da40a013f7f97d472641763c46f1e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/email/confirm-password-change": {
+            "post": {
+                "tags": [
+                    " Email - admin reset password -"
+                ],
+                "summary": "confirm password change",
+                "operationId": "79038d21b3e9539d8a084ffadde14b65",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "confirmPassword": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/appointments/": {
+            "get": {
+                "tags": [
+                    "Appointments"
+                ],
+                "summary": "get all apointments",
+                "operationId": "374e3b5733c5a54710159c9885776b4b",
+                "responses": {
+                    "200": {
+                        "description": "all appointments",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/cancel-appointment/{id}": {
+            "get": {
+                "tags": [
+                    "Appointments"
+                ],
+                "summary": "canceling an appointment",
+                "operationId": "0f69d42207abba6a21ef879224b5fd5d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of appointment",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "all appointments",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/appointments/info/": {
+            "post": {
+                "tags": [
+                    "Appointments"
+                ],
+                "summary": "get patient name and service type",
+                "description": "get patient name and service type by serviceType and date (mobile)",
+                "operationId": "8f60cf708d23067d1d9d3c05da86328e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "date": {
+                                        "type": "string"
+                                    },
+                                    "serviceType": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/clinics": {
+            "get": {
+                "tags": [
+                    "Clinic"
+                ],
+                "summary": "get all clinics",
+                "operationId": "47f364ab63626e8c4c3189be675602d0",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/clinics/clinic/{id}/working-slots": {
+            "get": {
+                "tags": [
+                    "Clinic"
+                ],
+                "summary": "working-slots by Clinic id",
+                "operationId": "5ec00de505f89700a860e20d2c8f2b46",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Clinic",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/clinic-doctor/{id}": {
+            "get": {
+                "tags": [
+                    "Clinic"
+                ],
+                "summary": "get doctor by id",
+                "operationId": "8f69dae68c8b3c522b01060de29d09d7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Doctor",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "410": {
+                        "description": "Gone"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/departments": {
+            "get": {
+                "tags": [
+                    "Departments"
+                ],
+                "summary": "get all departments",
+                "operationId": "1d4b424b94cd149dbf7e0b5e835fe50e",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/doctors/doctor/{id}/working-slots": {
+            "get": {
+                "tags": [
+                    "Doctor"
+                ],
+                "summary": "working-slots by Doctor id",
+                "operationId": "cae60494c6688bc9d962f5e9d1141055",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Doctor",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/doctors/{id}/patients": {
+            "get": {
+                "tags": [
+                    "Doctor"
+                ],
+                "summary": "get patients of selected doctor",
+                "operationId": "9476053aa4bfa61b797bea805b1cbf5f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Doctor",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "410": {
+                        "description": "Gone"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/doctor/{id}": {
+            "get": {
+                "tags": [
+                    "Doctor"
+                ],
+                "summary": "get doctor by id",
+                "operationId": "7e52f539775aec0ce06803a658776958",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Doctor",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "410": {
+                        "description": "Gone"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/upload": {
+            "post": {
+                "tags": [
+                    "Documents"
+                ],
+                "summary": "uploads an image or pdf",
+                "description": "upload medical documents related to th epatient",
+                "operationId": "uploadFile",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "documents[]": {
+                                        "description": "file to upload",
+                                        "type": "string",
+                                        "format": "base64"
+                                    },
+                                    "patientId": {
+                                        "description": "patient id",
+                                        "type": "integer"
+                                    },
+                                    "createdBy": {
+                                        "description": "creator id",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "All Patient Symptoms returned successfully",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/notes/{id}": {
+            "get": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Get Patient Notes by patient id",
+                "operationId": "3620e5d93c58d029e1ba771224ad00d7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Patient",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Patient Symptoms returned successfully",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/add-note": {
+            "post": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Add note to patient",
+                "operationId": "91446779c8945450a577e0806e1a4972",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "patient_id": {
+                                        "type": "number"
+                                    },
+                                    "note": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "note has been added",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/patients": {
+            "post": {
+                "tags": [
+                    "Patients"
+                ],
+                "summary": "create patient",
+                "operationId": "23b3f195cfd9218fd02ba85d41084448",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "firstName": {
+                                        "type": "string"
+                                    },
+                                    "lastName": {
+                                        "type": "string"
+                                    },
+                                    "clinicCode": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "user": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "patient has been created successfully",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "patient phone is duplicate or no clinic found with clinicCode",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/patients/{id}": {
+            "get": {
+                "tags": [
+                    "Patients"
+                ],
+                "summary": "Get Patient by patient id",
+                "description": "get patient",
+                "operationId": "5a40e983c33201c6539c153784bf3a29",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Patient",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Patient info  returned successfully",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "410": {
+                        "description": "Couldn't find selected patient",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/is-patient-exist": {
+            "post": {
+                "tags": [
+                    "Patients"
+                ],
+                "summary": "check if patient exist",
+                "operationId": "ba622fc2a52d1ae37def4430b59ddf09",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "phone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "patient has been created successfully",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "patient phone is duplicate or no clinic found with clinicCode",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/services": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "get all services",
+                "operationId": "951eb8b87a30a297268c7ffca91c4e63",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/symptoms/{id}": {
+            "get": {
+                "tags": [
+                    "Symptoms"
+                ],
+                "summary": "Get Patient Symptoms by patient id",
+                "operationId": "0e45fbde3a6fb193f70684ef99886aca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Patient",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Patient Symptoms returned successfully",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/days/": {
+            "get": {
+                "tags": [
+                    "Week Days"
+                ],
+                "summary": "get all Days",
+                "operationId": "8585d01e9d90c69d8ace9290780bfe59",
+                "responses": {
+                    "200": {
+                        "description": "all working slots",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "Authorization"
+                ],
+                "summary": "Logout Authnticated user by removing it's token",
+                "operationId": "Logout",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Authorization"
+                ],
+                "summary": "Login",
+                "operationId": "login",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "device_id": {
+                                        "type": "string"
+                                    },
+                                    "new_device": {
+                                        "type": "boolean",
+                                        "example": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+        {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    ]
+}
